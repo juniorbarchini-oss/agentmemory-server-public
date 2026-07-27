@@ -280,4 +280,9 @@ In `/Users/<your-mac-username>/.gemini/antigravity-cli/mcp_config.json` (or stan
 
 ---
 
-License: MIT
+## ⚖️ Credits & License
+
+* **Original Creator:** This project is a specialized server-client deployment wrapper of the excellent [agentmemory](https://github.com/rohitg00/agentmemory) library developed by [Rohit Gupta (rohitg00)](https://github.com/rohitg00). We are extremely grateful for his work in creating a persistent memory layer for AI agents.
+* **Server Adaptation & Docker Stack:** Packaged and adapted for multi-client centralized server architectures by the [juniorbarchini-oss](https://github.com/juniorbarchini-oss) organization.
+* **License:** Distributed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
