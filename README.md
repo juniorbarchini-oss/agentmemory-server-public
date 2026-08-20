@@ -286,3 +286,13 @@ In `/Users/<your-mac-username>/.gemini/antigravity-cli/mcp_config.json` (or stan
 * **Server Adaptation & Docker Stack:** Packaged and adapted for multi-client centralized server architectures by the [juniorbarchini-oss](https://github.com/juniorbarchini-oss) organization.
 * **License:** Distributed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
+---
+
+## 🌟 Support & Donations
+
+If you find this deployment stack useful, you can support the project in two ways:
+
+1. **Star the Repository:** Click the ⭐ button at the top right of this page.
+2. **Support on Ko-fi:** Buy me a coffee to support my work and maintenance of my open-source tools:
+
+[![Support me on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/hbarchini)
