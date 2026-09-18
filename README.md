@@ -1,6 +1,6 @@
 # 🧠 AgentMemory Server — Centralized AI Memory Hub in Docker
 
-Official repository for deploying a centralized **`agentmemory`** Hub (v0.9.28 + Rust `iii` engine v0.11.2) using Docker Compose.
+Official repository for deploying a centralized **`agentmemory`** Hub (v0.9.29 + Rust `iii` engine v0.11.2) using Docker Compose.
 
 It enables a shared, persistent 24/7 memory hub for AI coding agents (such as Antigravity `agy`, Cursor, Claude Code, etc.) across multiple client machines connected via VPN (e.g. Tailscale) or local area networks, optionally accelerated by a central **Ollama** server.
 
@@ -60,6 +60,7 @@ services:
       - CONSOLIDATION_ENABLED=true
       - AGENTMEMORY_INJECT_CONTEXT=true
       - AGENTMEMORY_URL=http://<server-ip>:3111
+      - NODE_OPTIONS=--max-old-space-size=1024
     volumes:
       - ./data:/home/node/data
       - ./agentmemory_cache:/root/.agentmemory
@@ -82,11 +83,13 @@ services:
 
 *(Note: Adjust `./data` and `./agentmemory_cache` paths to valid directories on your host server).*
 
+*(Note: `NODE_OPTIONS=--max-old-space-size=1024` caps the V8 heap at 1GB. Without it, `/agentmemory/health` may report `memory_heap_tight_9x%` warnings shortly after startup — this reflects V8's default small initial heap growing on demand, not an actual memory shortage (the container itself has no Docker memory limit by default). Tune the value up if your workload is heavier.)*
+
 ### 2. `Dockerfile`
 ```dockerfile
 FROM node:20-slim
 RUN apt-get update && apt-get install -y curl tar ca-certificates procps && rm -rf /var/lib/apt/lists/*
-RUN npm install -g @agentmemory/agentmemory@0.9.28
+RUN npm install -g @agentmemory/agentmemory@0.9.29
 RUN mkdir -p /root/.agentmemory/bin && curl -fsSL "https://github.com/iii-hq/iii/releases/download/iii/v0.11.2/iii-x86_64-unknown-linux-gnu.tar.gz" | tar -xz -C /root/.agentmemory/bin && chmod +x /root/.agentmemory/bin/iii
 WORKDIR /home/node
 ENV HOME=/home/node

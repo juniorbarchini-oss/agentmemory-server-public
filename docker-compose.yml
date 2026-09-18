@@ -13,6 +13,7 @@ services:
       - CONSOLIDATION_ENABLED=true
       - AGENTMEMORY_INJECT_CONTEXT=true
       - AGENTMEMORY_URL=http://<server-ip>:3111
+      - NODE_OPTIONS=--max-old-space-size=1024
     volumes:
       - ./data:/home/node/data
       - ./agentmemory_cache:/root/.agentmemory
